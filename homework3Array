@@ -29,7 +29,7 @@ do
             }
             else
             {
-                Console.WriteLine($"{userInputText} is not a number\n")
+                Console.WriteLine($"{userInputText} is not a number\n");
             }
             break;
 
