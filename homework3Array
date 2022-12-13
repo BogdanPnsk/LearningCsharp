@@ -1,37 +1,38 @@
 
 
 string namesText = "Tim, Bob, Jane";
+
 string[] namesList = namesText.Split(", ");
-string userInputText;
+
+string userInputText = null;
+
 
 do
 {
-    Console.WriteLine("Enter a whole number between 1 and 3");
+    Console.WriteLine("Enter number from 1 to 3 to get the name");
     userInputText = Console.ReadLine();
 
-    switch (userInputText.ToLower())
+    if (userInputText.ToLower() == "exit")
     {
-        case "exit":
-            Console.WriteLine("\nThank you, goodbye.");
-            break;
-
-        default:
-            if (int.TryParse(userInputText, out int userInput))
-            {
-                if (userInput >= 1 && userInput <= namesList.Length)
-                {
-                    Console.WriteLine($"The name is {namesList[userInput - 1]}" + "\n");
-                }
-                else
-                {
-                    Console.WriteLine("The number must be between 1 and 3\n");
-                }
-            }
+        Console.WriteLine("\nGoodbye");
+        break;
+    }
+    else
+    {
+        if (int.TryParse(userInputText, out int userInput))
+        {
+            if (userInput >= 1 && userInput <= namesList.Length)
+                Console.WriteLine($"The name is {namesList[userInput - 1]}\n");
             else
             {
-                Console.WriteLine($"{userInputText} is not a number\n");
+                Console.WriteLine($"Enter a number between 1 and 3\n");
             }
-            break;
-
+        }
+        else
+        {
+            Console.WriteLine($"{userInputText} is not a number.\n");
+        }
     }
+
 } while (userInputText.ToLower() != "exit");
+
