@@ -9,7 +9,7 @@ string userInputText = null;
 
 do
 {
-    Console.WriteLine("Enter number from 1 to 3 to get the name");
+    Console.WriteLine("Enter number from 1 to 3 to get the name, or type exit to quit");
     userInputText = Console.ReadLine();
 
     if (userInputText.ToLower() == "exit")
