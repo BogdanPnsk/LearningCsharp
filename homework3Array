@@ -6,10 +6,9 @@ string[] namesList = namesText.Split(", ");
 
 string userInputText = null;
 
-
-do
+while (true)
 {
-    Console.WriteLine("Enter number from 1 to 3 to get the name, or type exit to quit");
+    Console.WriteLine("Enter number from 1 to 3 to get the name or type exit");
     userInputText = Console.ReadLine();
 
     if (userInputText.ToLower() == "exit")
@@ -17,28 +16,20 @@ do
         Console.WriteLine("\nGoodbye");
         break;
     }
-    
-    else
+   
+    if (!int.TryParse(userInputText, out int userInput))
     {
-       
-       if (int.TryParse(userInputText, out int userInput))
-        {
-            if (userInput >= 1 && userInput <= namesList.Length)
-                Console.WriteLine($"The name is {namesList[userInput - 1]}\n");
-            
-            else
-            {
-                Console.WriteLine($"Enter a number between 1 and 3\n");
-            }
-            
-        }
-        
-        else
-              {
-            Console.WriteLine($"{userInputText} is not a number.\n");
-        }
-        
+        Console.WriteLine($"{userInputText} is not a number.\n");
+        continue;
     }
 
-} while (userInputText.ToLower() != "exit");
+    if (!(userInput >= 1 && userInput <= namesList.Length))
+    {
+        Console.WriteLine($"The number was outside the range\n");
+        continue;
+    }
+
+
+    Console.WriteLine($"The name is {namesList[userInput - 1]}\n");
+};
 
